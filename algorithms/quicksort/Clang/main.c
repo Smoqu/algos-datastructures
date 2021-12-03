@@ -4,29 +4,35 @@
 int partition(int list[], int low, int high) {
   int pivot = list[high];
 
-  int i = low - 1;
+  int i = low-1;
 
   for (int j = low; j < high; j++) {
     if (list[j] <= pivot) {
 
       i++;
-    int iCopy = list[i];
-    list[i] = list[j];
-    list[j] = iCopy;
+
+      int iCopy = list[i];
+      list[i] = list[j];
+      list[j] = iCopy;
     }
 
 
   }
 
-  return i;
+  int i1Copy = list[i+1];
+  list[i+1] = list[high];
+  list[high] = i1Copy;
+
+  return i+1;
 
 }
 
 
 void quicksort(int list[], int low, int high) {
-  if (low >= 0 && high >= 0 && low < high) {
+  if (high == 1) return;
+
+  if (low < high) {
     int pivot = partition(list, low, high);
-    printf("Pivot: %d\n", pivot);
     quicksort(list, low, pivot - 1);
     quicksort(list, pivot + 1, high);
   }
@@ -36,10 +42,10 @@ void quicksort(int list[], int low, int high) {
 int main() {
 
   int list[] = {5, 6, 4, 9, 1, -56, 256, 100};
-  int length = sizeof(list) / sizeof(int);
-  quicksort(list, 1, length);
+  int length = sizeof(list) / sizeof(int) - 1;
+  quicksort(list, 0, length);
 
-  for (int i = 0; i < length; i++) printf("%d\n", list[i]);
+  for (int i = 0; i < length+1; i++) printf("Value: %d\n", list[i]);
 
   return 0;
 }
