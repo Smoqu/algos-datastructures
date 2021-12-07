@@ -6,7 +6,7 @@ void insertion_sort(int list[], int length) {
 
   for (int i = 0; i < length; i++) {
     int actual = list[i];
-    for (int j = i-1; j >= 0; j--) {
+    for (int j = i-1; j >= 0 && list[j] > actual; j--) {
       printf("j %d i %d\n", j, i);
       printf("List: ");
       printList(list, length, 1);
