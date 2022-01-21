@@ -24,7 +24,7 @@ fn merge(left: &[i32], right: &[i32]) -> Vec<i32> {
         r += 1;
     }
 
-    return result;
+    result
 }
 
 fn mergesort(array: &[i32]) -> Vec<i32> {

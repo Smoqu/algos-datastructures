@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.cs": "csharp",
+    "**/*.html": "html",
+    "**/templates/**/*.html": "django-html",
+    "**/templates/**/*": "django-txt",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+    "*.js": "javascript",
+    "*.lock": "toml",
+    "functional": "c",
+    "format.h": "c"
+  }
+}
