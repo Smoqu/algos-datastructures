@@ -57,12 +57,13 @@ int pop(stack_t *stack) {
   int old_value = h->value;
   if (stack->head->next == NULL) {
     stack->head = NULL;
+    stack->length--;
     return old_value;
   }
 
-  node_t new_head = *h->next;
+  node_t *new_head = h->next;
 
-  stack->head = &new_head;
+  stack->head = new_head;
   stack->length--;
 
   return old_value; 
@@ -70,13 +71,20 @@ int pop(stack_t *stack) {
 
 void dump(stack_t *stack) {
 
+  int length = stack->length;
   int x = pop(stack);
   printf("\t%d\n", x);
-  stack_t *tmp = init_stack(x, stack->length);
+  stack_t *tmp = init_stack(x, length);
 
   while (stack->length > 0) {
-    printf("\t%d\n", pop(stack));
-    /*push(tmp, x);*/
+    x = pop(stack);
+    printf("\t%d\n", x);
+    push(tmp, x);
+  }
+
+  while (tmp->length > 0) {
+    x = pop(tmp);
+    push(stack, x);
   }
 
 }
@@ -90,15 +98,7 @@ int main() {
 
   printf("Length: %d\n", s->length);
 
-  /*dump(&s);*/
-
-  int x = pop(s);
-  stack_t *tmp = init_stack(x, s->length);
-  for (int i = 0; i < stack_get_size(s); i++) {
-    x = pop(s);
-    printf("%d\n", x);
-    push(tmp, get_head(s));
-  }
+  dump(s);
 
   return 0;
 }
