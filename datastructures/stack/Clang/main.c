@@ -92,12 +92,11 @@ int main() {
 
   /*dump(&s);*/
 
-  int x = pop(s);
-  stack_t *tmp = init_stack(x, s->length);
+  /*int x = pop(s);*/
+  /*stack_t *tmp = init_stack(x, s->length);*/
   for (int i = 0; i < stack_get_size(s); i++) {
-    x = pop(s);
-    printf("%d\n", x);
-    push(tmp, get_head(s));
+    printf("%d\n", get_head(s));
+    pop(s);
   }
 
   return 0;
